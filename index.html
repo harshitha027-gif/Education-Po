@@ -20,6 +20,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.8); /* Optional: slightly opaque background */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: subtle shadow */
         }
         .nav-title {
             font-size: 1.5rem;
@@ -28,28 +30,43 @@
         }
         .nav-links {
             display: flex;
-            gap: 1rem;
+            gap: 1rem; /* Keep gap */
+            align-items: center; /* Align items vertically */
         }
-        .login-link {
+        .login-link, .register-button { /* Apply common styles */
             color: #333;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.3rem;
+            padding: 0.5rem 1rem; /* Consistent padding */
+            border-radius: 5px; /* Consistent radius */
+            transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition */
         }
-        .register-button {
+        .login-link:hover { /* Hover effect for login */
+             background-color: #eee;
+        }
+        .register-button { /* Specific styles for register button appearance */
             background-color: #2563eb;
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+            border: none; /* Ensure no default border */
+            cursor: pointer; /* Indicate it's clickable */
+        }
+         .register-button:hover { /* Hover effect for register */
+            background-color: #1e40af; /* Darker blue on hover */
+        }
+        /* Remove default focus outline for accessibility, consider adding custom focus styles */
+        .login-link:focus, .register-button:focus {
+             outline: none;
+             box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* Example focus style */
         }
         .hero {
             text-align: center;
             padding: 4rem 2rem;
+            flex-grow: 1; /* Allow hero to take remaining space */
+            display: flex; /* Center content vertically too */
+            flex-direction: column;
+            justify-content: center;
         }
         .hero-heading {
             font-size: 3rem;
@@ -66,13 +83,22 @@
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6; /* Improve readability */
         }
         @media (max-width: 600px) {
             nav {
                 padding: 1rem;
+                flex-direction: column; /* Stack nav items on small screens */
+                gap: 0.5rem;
+            }
+             .nav-links {
+                margin-top: 0.5rem; /* Space below title */
+            }
+            .hero {
+                 padding: 3rem 1rem;
             }
             .hero-heading {
-                font-size: 2.5rem;
+                font-size: 2.2rem; /* Adjust size */
             }
             .hero-subtitle {
                 font-size: 1rem;
@@ -84,8 +110,10 @@
     <nav>
         <div class="nav-title">Education Portal</div>
         <div class="nav-links">
-            <a href="/login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
-            <button class="register-button"><i class="fas fa-user-plus"></i> Register</button>
+            <!-- Changed href to relative path -->
+            <a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <!-- **** CHANGED FROM <button> TO <a> **** -->
+            <a href="register.html" class="register-button"><i class="fas fa-user-plus"></i> Register</a>
         </div>
     </nav>
 
@@ -94,5 +122,8 @@
         <h1 class="hero-heading gradient-text">Education Portal</h1>
         <p class="hero-subtitle">Your gateway to knowledge and learning excellence. Join our community of learners and start your educational journey today.</p>
     </section>
+
+    <!-- No need to link main.js for this specific button functionality anymore -->
+    <!-- <script src="main.js"></script> -->
 </body>
 </html>
